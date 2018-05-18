@@ -73,7 +73,7 @@ class Trainer:
 
             for _ in range(self.d_iter):
                 # Discriminator
-                # V(G, D) = E[logD(x)] + E[log(1-D(G(z)))]
+                # V(D) = E[logD(x)] + E[log(1-D(G(z)))]
                 self.D.zero_grad()
                 z = to_var(torch.randn(self.batch_size, self.G.z_dim))
 
@@ -81,12 +81,10 @@ class Trainer:
                 real_labels = real_labels.float()
 
                 d_loss_real = self.criterion(self.D(real_imgs), real_labels)
-                #d_loss_real = -self.D(real_imgs).mean()  # wasserstein
                 fake_imgs = self.G(z).detach()
                 fake_labels = real_labels.clone()
                 fake_labels.fill_(0)
                 d_loss_fake = self.criterion(self.D(fake_imgs), fake_labels)
-                #d_loss_fake = self.D(fake_imgs).mean()  # wasserstein
 
                 d_loss = d_loss_real + d_loss_fake
                 d_loss.backward()
@@ -101,7 +99,6 @@ class Trainer:
                 fake_labels.fill_(1)
 
                 g_loss = self.criterion(self.D(fake_imgs), fake_labels)
-                #g_loss = -self.D(self.G(z)).mean()  # Wasserstein
                 g_loss.backward()
 
                 self.G_optimizer.step()
