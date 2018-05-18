@@ -12,7 +12,7 @@ nsml run -d cifar10_python -a "--sn"                   # Spectralnorm
 nsml run -d cifar10_python                             # No SN
 nsml run -d cifar10_python -a "--sn --inception_score" # Calculate Inception score
 ```
-Of course, executing `python main.py` will do well.
+Of course, executing `python main.py` will do well if you make empty functions for nsml.
 
 ## Architecture
 
