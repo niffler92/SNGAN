@@ -2,6 +2,7 @@
 
 ## Requirements
 nsml (not neccessary)
+visdom
 
 ## Paper
 [Spectral Normalization for Generative Adversarial Networks](https://openreview.net/pdf?id=B1QRgziT-)
