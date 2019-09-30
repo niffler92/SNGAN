@@ -1,18 +1,24 @@
 # Pytorch Implementation of SN-GAN with CIFAR10
 
 ## Requirements
-nsml
+nsml (not neccessary)
 
 ## Paper
 [Spectral Normalization for Generative Adversarial Networks](https://openreview.net/pdf?id=B1QRgziT-)
 
 ## Run Example
+**If you have nsml:**
 ```{python}
 nsml run -d cifar10_python -a "--sn"                   # Spectralnorm
 nsml run -d cifar10_python                             # No SN
 nsml run -d cifar10_python -a "--sn --inception_score" # Calculate Inception score
 ```
-Of course, executing `python main.py` will do well if you make empty functions for nsml.
+**If you don't:**
+```{python}
+python main.py --sn                    # Spectralnorm
+python main.py                         # No SN
+python main.py --sn --inception_score" # Calculate Inception score
+```
 
 ## Architecture
 
